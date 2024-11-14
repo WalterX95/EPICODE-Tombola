@@ -1,4 +1,3 @@
-const numbersContainer = [];
 const remeberNumbers = [];
 
 
@@ -23,29 +22,27 @@ const randomNumber = () => {
 
 function rememberNumber() {
     const numbTomb = document.querySelectorAll('#tombolone div');
-    console.log(numbersContainer.length);
-    for(let i = 0; i < numbersContainer.length; i++) {
-        if(remeberNumbers[i] === numbersContainer[i]) {
+    let span = document.getElementById("numberTitle").innerText;
+    console.log(remeberNumbers.length);
+    for(let i = 0; i < remeberNumbers.length; i++) {
+        if(remeberNumbers[i] === span) {
             randomNumber();
             console.log('X');
             return;
         }
         else {
             console.log('Y');
-            numbTomb[i].classList.add('hasExtract');
+            indexTomb = remeberNumbers[i] - 1 ;
+            numbTomb[indexTomb].classList.add('hasExtract');
         }
     }
 }
 
-
 function chooseNumber() {
     let numberChoose = randomNumber();
-    let inputForm = document.getElementById("numberTitle");
-    inputForm = numberChoose;
-    pushDataNumber(remeberNumbers,parseInt(inputForm));
-    pushDataNumber(numbersContainer,parseInt(inputForm))
-    console.log(remeberNumbers);
     let span = document.getElementById("numberTitle");
+    pushDataNumber(remeberNumbers,numberChoose);
+    console.log(remeberNumbers);
     span.innerText = numberChoose;
     rememberNumber();
 }
